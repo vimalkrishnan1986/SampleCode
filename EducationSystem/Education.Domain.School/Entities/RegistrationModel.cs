@@ -6,6 +6,6 @@ namespace Education.Domains.School.Entities
     {
         public string Name { get; set; }
         public string Address { get; set; }
-        public byte[] image { get; set; }
+        public byte[] Image { get; set; }
     }
 }
