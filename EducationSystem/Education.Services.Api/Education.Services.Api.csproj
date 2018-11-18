@@ -2,14 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <ProjectReference Include="..\Education.BusinessServices\Education.BusinessServices.csproj" />
+    <ProjectReference Include="..\Education.Domain.School\Education.Domains.School.csproj" />
+    <ProjectReference Include="..\Education.Utitlites\Education.Utitlites.csproj" />
+    <ProjectReference Include="..\EducationSystem.DataServices\Education.DataServices.csproj" />
   </ItemGroup>
 
 </Project>
