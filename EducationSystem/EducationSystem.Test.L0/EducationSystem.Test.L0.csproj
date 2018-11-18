@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Business\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Education.BusinessServices\Education.BusinessServices.csproj" />
     <ProjectReference Include="..\Education.Services.Api\Education.Services.Api.csproj" />
     <ProjectReference Include="..\Education.Utitlites\Education.Utitlites.csproj" />
