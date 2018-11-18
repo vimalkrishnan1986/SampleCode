@@ -21,17 +21,26 @@ namespace Education.Services.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public async Task<IActionResult> Register(RegistrationModel model)
+        public async Task<IActionResult> Register([FromHeader] Guid correlationId, RegistrationModel model)
         {
+            LoggingService.Log($"Register Request has been recieved for correlationId {correlationId} ");
             try
             {
-                return Accepted(await _schoolBusinessService.Resgister(model));
+                if (await _schoolBusinessService.Resgister(model))
+                {
+                    return Accepted();
+                }
+                throw new OperationCanceledException();
             }
 
             catch (Exception ex)
             {
                 LoggingService.Log(ex);
                 throw;
+            }
+            finally
+            {
+                LoggingService.Log($"Register Request has been completed for correlationId {correlationId} ");
             }
         }
 

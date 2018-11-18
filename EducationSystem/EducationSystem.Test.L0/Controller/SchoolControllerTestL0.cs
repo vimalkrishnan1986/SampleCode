@@ -71,7 +71,7 @@ namespace EducationSystem.Test.L0.Controller
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act
-            var res = await _controller.Register(It.IsAny<RegistrationModel>());
+            var res = await _controller.Register(It.IsAny<Guid>(),  It.IsAny<RegistrationModel>());
 
             //Assert
             res.Should().NotBeNull();
@@ -88,7 +88,7 @@ namespace EducationSystem.Test.L0.Controller
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act
-            var res = await _controller.Register(It.IsAny<RegistrationModel>());
+            var res = await _controller.Register(It.IsAny<Guid>(), It.IsAny<RegistrationModel>());
 
         }
         #endregion
