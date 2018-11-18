@@ -21,7 +21,7 @@ namespace Education.Services.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public async Task<IActionResult> Post(RegistrationModel model)
+        public async Task<IActionResult> Register(RegistrationModel model)
         {
             try
             {
