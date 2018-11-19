@@ -1,0 +1,33 @@
+<app-layout>
+  <div class="alert alert-dismissible fade show" role="alert" [ngClass]="{'alert-success':message.isSuccess,'alert-danger':!message.isSuccess}"
+    *ngIf="!!message.text">
+    <strong>{{message.text}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)='message.text =""'>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]='employeeForm' (ngSubmit)='submitForm()'>
+    <div class="card">
+      <div class="card-header">
+        Registration Form
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="formDataName">Name</label>
+          <input type="text" class="form-control" id="formDataName" placeholder="Enter name" formControlName='name'>
+        </div>
+        <div class="form-group">
+          <label for="formDataAddress">Address</label>
+          <textarea class="form-control" id="formDataAddress" placeholder="Enter address" formControlName='address'></textarea>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile" (change)="onFileChange($event)">
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <button type="submit" class="btn btn-primary pull-right" [disabled]="!employeeForm.valid">Submit</button>
+      </div>
+    </div>
+  </form>
+</app-layout>
