@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Education.Utitlites.Logging;
 using Education.Domains.School.Entities;
 using Education.BusinessServices.Contracts;
+using Education.Services.Api.Models;
 
 namespace Education.Services.Api.Controllers
 {
@@ -11,9 +12,8 @@ namespace Education.Services.Api.Controllers
     public class SchoolController : ControllerBase
     {
         private readonly ISchoolBusinessService _schoolBusinessService;
-
         public SchoolController(ISchoolBusinessService schoolBusinessService, ILoggingService loggingService) :
-            base(loggingService)
+                base(loggingService)
         {
             _schoolBusinessService = schoolBusinessService ?? throw new ArgumentNullException(nameof(schoolBusinessService));
         }
@@ -26,7 +26,11 @@ namespace Education.Services.Api.Controllers
             LoggingService.Log($"Register Request has been recieved for correlationId {correlationId} ");
             try
             {
-                if (await _schoolBusinessService.Resgister(model))
+                if (model == null)
+                {
+                    throw new ArgumentNullException(nameof(model));
+                }
+                if (await _schoolBusinessService.Resgister(model.ToDomain()))
                 {
                     return Accepted();
                 }
@@ -49,11 +53,11 @@ namespace Education.Services.Api.Controllers
         [Route("Sample")]
         public async Task<IActionResult> Get()
         {
-            return await Task.FromResult(Ok(new RegistrationModel
+            return await Task.FromResult(Ok(new RegistrationModel(new RegistrationRequest
             {
                 Name = "SampleName",
                 Address = "SampleAddress"
-            }));
+            })));
         }
     }
 }

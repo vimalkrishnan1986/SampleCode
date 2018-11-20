@@ -27,13 +27,18 @@ namespace Education.BusinessServices
             _schoolDataService = schoolDataService ?? throw new ArgumentNullException(nameof(schoolDataService));
             _loggingService = loggingService ?? throw new ArgumentNullException(nameof(loggingService));
         }
-        public async Task<bool> Resgister(RegistrationModel registrationModel)
+        public async Task<bool> Resgister(RegistrationRequest registrationModel)
         {
             _loggingService.Log($"Request has been recieved at {ServiceName} ");
 
             try
             {
-                return await _schoolDataService.Register(registrationModel);
+                var res = await _schoolDataService.Register(registrationModel);
+                if (!res)
+                {
+                    throw new Exception("There was exception happend in the  DB layer");
+                }
+                return res;
             }
             catch (Exception ex)
             {

@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Education.Domain.School\Education.Domains.School.csproj" />
     <ProjectReference Include="..\Education.Helpers\Education.Helpers.csproj" />
     <ProjectReference Include="..\Education.Services.Api\Education.Services.Api.csproj" />
     <ProjectReference Include="..\Education.Utitlites\Education.Utitlites.csproj" />

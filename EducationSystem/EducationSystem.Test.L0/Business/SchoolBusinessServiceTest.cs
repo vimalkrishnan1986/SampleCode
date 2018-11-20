@@ -58,11 +58,11 @@ namespace EducationSystem.Test.L0.Business
         public async Task SchoolBusinessServiceTest_Register_Success()
         {
             //assemble
-            _mockSchoolDataService.Setup(m => m.Register(It.IsAny<RegistrationModel>())).Returns(Task.FromResult(true));
+            _mockSchoolDataService.Setup(m => m.Register(It.IsAny<RegistrationRequest>())).Returns(Task.FromResult(true));
             ISchoolBusinessService schoolBusinessService = new SchoolBusinessService(_mockSchoolDataService.Object, _mockLoggingService.Object);
 
             //act
-            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationModel>());
+            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationRequest>());
 
             //assert
             res.Should().BeTrue();
@@ -73,11 +73,11 @@ namespace EducationSystem.Test.L0.Business
         public async Task SchoolBusinessServiceTest_Register_Failure()
         {
             //assemble
-            _mockSchoolDataService.Setup(m => m.Register(It.IsAny<RegistrationModel>())).Throws(new Exception());
+            _mockSchoolDataService.Setup(m => m.Register(It.IsAny<RegistrationRequest>())).Throws(new Exception());
             ISchoolBusinessService schoolBusinessService = new SchoolBusinessService(_mockSchoolDataService.Object, _mockLoggingService.Object);
 
             //act
-            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationModel>());
+            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationRequest>());
 
             //assert
             res.Should().BeFalse();

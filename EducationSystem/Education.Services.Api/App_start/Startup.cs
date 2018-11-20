@@ -7,11 +7,16 @@ using Education.Utitlites.Logging;
 using Education.DataServices;
 using Education.BusinessServices;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.EntityFrameworkCore;
+using Education.Helpers;
+using Education.Domains.School.Common;
+using Education.Domains.School.Repositories;
+using Education.Domains.School.Entities;
 namespace Education.Services.Api.App_start
 {
     public class Startup
     {
+        const string schoolConnectionstring = "schoolCon";
         IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -24,6 +29,8 @@ namespace Education.Services.Api.App_start
             services.AddTransient<ILoggingService, LoggingService>();
             services.AddTransient<ISchoolDataService, SchoolDataService>();
             services.AddTransient<ISchoolBusinessService, SchoolBusinessService>();
+            services.AddTransient<IGenericRepository<RegistrationRequest>, RegistrationRepository>();
+            services.AddDbContext<DbContext>(option => option.UseSqlServer(ConfigHelper.GetConnectionString(schoolConnectionstring)));
             services.AddMvc();
 
         }

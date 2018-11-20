@@ -15,5 +15,10 @@ namespace Education.Helpers
 
             return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(ConfigurationManager.AppSettings[key]);
         }
+
+        public static string GetConnectionString(string key)
+        {
+            return ConfigurationManager.ConnectionStrings[key].ConnectionString;
+        }
     }
 }

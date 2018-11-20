@@ -5,6 +5,6 @@ namespace Education.DataServices.Contracts
 {
     public interface ISchoolDataService
     {
-        Task<bool> Register(RegistrationModel model);
+        Task<bool> Register(RegistrationRequest model);
     }
 }

@@ -12,6 +12,7 @@ using FluentAssertions;
 using Education.Domains.School.Entities;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Education.Services.Api.Models;
 
 namespace EducationSystem.Test.L0.Controller
 {
@@ -67,11 +68,11 @@ namespace EducationSystem.Test.L0.Controller
         public async Task SchoolControllerTestL0_Register_Success()
         {
             // Assemble
-            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationModel>())).Returns(Task.FromResult(true));
+            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationRequest>())).Returns(Task.FromResult(true));
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act
-            var res = await _controller.Register(It.IsAny<Guid>(),  It.IsAny<RegistrationModel>());
+            var res = await _controller.Register(It.IsAny<Guid>(), new RegistrationModel());
 
             //Assert
             res.Should().NotBeNull();
@@ -84,11 +85,11 @@ namespace EducationSystem.Test.L0.Controller
         public async Task SchoolControllerTestL0_Register_Failure()
         {
             // Assemble
-            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationModel>())).Throws(new OperationCanceledException());
+            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationRequest>())).Throws(new OperationCanceledException());
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act
-            var res = await _controller.Register(It.IsAny<Guid>(), It.IsAny<RegistrationModel>());
+            var res = await _controller.Register(It.IsAny<Guid>(), new RegistrationModel());
 
         }
         #endregion
