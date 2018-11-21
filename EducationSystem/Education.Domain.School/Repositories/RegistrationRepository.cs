@@ -6,7 +6,7 @@ namespace Education.Domains.School.Repositories
 {
     public sealed class RegistrationRepository : BaseRepository<RegistrationRequest>
     {
-        public RegistrationRepository(DbContext dbContext) :
+        public RegistrationRepository(SchoolDBContext dbContext) :
             base(dbContext)
         {
 

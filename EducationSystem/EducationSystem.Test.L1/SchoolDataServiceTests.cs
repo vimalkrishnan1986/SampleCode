@@ -1,7 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using System.Configuration;
+using System.Reflection;
 using Education.Domains.School.Entities;
 using Education.Domains.School.Repositories;
 using Education.Domains.School;
@@ -11,25 +10,24 @@ using Education.DataServices;
 using Education.DataServices.Contracts;
 using Education.Utitlites.Logging;
 using Microsoft.EntityFrameworkCore;
-using Education.Helpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EducationSystem.Test.L1
 {
     [TestClass]
     public class SchoolDataServiceTests
     {
-
         IGenericRepository<RegistrationRequest> _repository;
         ISchoolDataService _schoolDataService;
-        ILoggingService _loggingService;
-        DbContext _dbContext;
+        SchoolDBContext _dbContext;
 
         [TestInitialize]
 
         public void Initialize()
         {
-            _loggingService = Activator.CreateInstance<LoggingService>();
-            var contextOpions = new DbContextOptionsBuilder<SchoolDBContext>().UseSqlServer(ConfigHelper.GetConnectionString("schoolCon")).Options;
+            ILoggingService _loggingService = Activator.CreateInstance<LoggingService>();
+            var contextOpions = new DbContextOptionsBuilder<SchoolDBContext>().
+                UseSqlServer(GetConnectionString("schoolCon")).Options;
             _dbContext = new SchoolDBContext(contextOpions);
             _dbContext.Database.EnsureCreated();
             _repository = new RegistrationRepository(_dbContext);
@@ -47,7 +45,6 @@ namespace EducationSystem.Test.L1
         public async Task SchoolDataServiceTests_RegisterTest()
 
         {
-
             var model = new RegistrationRequest()
             {
                 Name = "test"
@@ -55,6 +52,13 @@ namespace EducationSystem.Test.L1
 
             var res = await _schoolDataService.Register(model);
             Assert.IsTrue(res);
+        }
+
+        private string GetConnectionString(String key)
+        {
+            var configuation = ConfigurationManager.OpenExeConfiguration(Assembly.GetExecutingAssembly().Location);
+
+            return configuation.ConnectionStrings.ConnectionStrings[key].ConnectionString;
         }
 
     }

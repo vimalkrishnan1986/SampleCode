@@ -12,8 +12,8 @@ using Education.Helpers;
 using Education.Data.Common;
 using Education.Domains.School.Repositories;
 using Education.Domains.School.Entities;
-using Microsoft.Extensions.Logging;
 using System;
+using Education.Domains.School;
 
 namespace Education.Services.Api.App_start
 {
@@ -33,7 +33,9 @@ namespace Education.Services.Api.App_start
             services.AddTransient<ISchoolDataService, SchoolDataService>();
             services.AddTransient<ISchoolBusinessService, SchoolBusinessService>();
             services.AddTransient<IGenericRepository<RegistrationRequest>, RegistrationRepository>();
-            services.AddDbContext<DbContext>(option => option.UseSqlServer(ConfigHelper.GetConnectionString(schoolConnectionstring)));
+            services.AddDbContext<SchoolDBContext>(option => option.UseSqlServer
+            (ConfigHelper.GetConnectionString(schoolConnectionstring), options => options.CommandTimeout(60))
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll));
             services.AddMvc();
 
         }
@@ -46,7 +48,7 @@ namespace Education.Services.Api.App_start
             {
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = serviceScope.ServiceProvider.GetRequiredService<DbContext>();
+                    var context = serviceScope.ServiceProvider.GetRequiredService<SchoolDBContext>();
                     context.Database.EnsureCreated();
                 }
             }

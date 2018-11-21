@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 
@@ -18,7 +19,13 @@ namespace Education.Helpers
 
         public static string GetConnectionString(string key)
         {
-            return ConfigurationManager.ConnectionStrings[key].ConnectionString;
+            var configuration = ConfigurationManager.ConnectionStrings[key];
+
+            if (configuration == null)
+            {
+                throw new KeyNotFoundException(nameof(key));
+            }
+            return configuration.ConnectionString;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Education.Services.Api.Controllers
     public class SchoolController : ControllerBase
     {
         private readonly ISchoolBusinessService _schoolBusinessService;
+
         public SchoolController(ISchoolBusinessService schoolBusinessService, ILoggingService loggingService) :
                 base(loggingService)
         {
@@ -21,7 +22,7 @@ namespace Education.Services.Api.Controllers
 
         [Route("Register")]
         [HttpPost]
-        public async Task<IActionResult> Register([FromHeader] Guid correlationId, RegistrationModel model)
+        public async Task<IActionResult> Register([FromHeader] Guid correlationId, [FromBody] RegistrationModel model)
         {
             LoggingService.Log($"Register Request has been recieved for correlationId {correlationId} ");
             try
