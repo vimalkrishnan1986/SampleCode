@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Education.BusinessServices\Education.BusinessServices.csproj" />
+    <ProjectReference Include="..\Education.Data.Common\Education.Data.Common.csproj" />
     <ProjectReference Include="..\Education.Domain.School\Education.Domains.School.csproj" />
     <ProjectReference Include="..\Education.Helpers\Education.Helpers.csproj" />
     <ProjectReference Include="..\Education.Utitlites\Education.Utitlites.csproj" />

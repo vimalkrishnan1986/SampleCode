@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Education.Utitlites.Logging;
 using Education.DataServices.Contracts;
 using Education.Domains.School.Entities;
-using Education.Domains.School.Common;
+using Education.Data.Common;
+
 namespace Education.DataServices
 {
     public sealed class SchoolDataService : ISchoolDataService

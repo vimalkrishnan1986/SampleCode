@@ -9,9 +9,12 @@ using Education.BusinessServices;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Education.Helpers;
-using Education.Domains.School.Common;
+using Education.Data.Common;
 using Education.Domains.School.Repositories;
 using Education.Domains.School.Entities;
+using Microsoft.Extensions.Logging;
+using System;
+
 namespace Education.Services.Api.App_start
 {
     public class Startup
@@ -35,8 +38,23 @@ namespace Education.Services.Api.App_start
 
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggingService loggerFactory
+            )
         {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<DbContext>();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                }
+            }
+            catch (Exception ex)
+            {
+                loggerFactory.Log(ex);
+            }
             app.UseMvc();
         }
 

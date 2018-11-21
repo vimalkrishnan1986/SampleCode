@@ -15,21 +15,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Services.Host", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{66AFE28B-92FF-455C-87D0-8B6587EDB75D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Domains.School", "Education.Domain.School\Education.Domains.School.csproj", "{E89E6315-A40E-42F0-8CCE-E3F2B85B4F8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Domains.School", "Education.Domain.School\Education.Domains.School.csproj", "{E89E6315-A40E-42F0-8CCE-E3F2B85B4F8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataServices", "DataServices", "{929857E3-D583-4250-8BBD-20FA070C2A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.DataServices", "EducationSystem.DataServices\Education.DataServices.csproj", "{BDE0D13E-A962-4D25-9965-74794FCD4F50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.DataServices", "EducationSystem.DataServices\Education.DataServices.csproj", "{BDE0D13E-A962-4D25-9965-74794FCD4F50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessServices", "BusinessServices", "{FF1A4D71-8FA3-4B8E-B23E-6F2C68C89308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.BusinessServices", "Education.BusinessServices\Education.BusinessServices.csproj", "{2F92D935-1AFC-46B8-87A4-9E29DBFD55F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.BusinessServices", "Education.BusinessServices\Education.BusinessServices.csproj", "{2F92D935-1AFC-46B8-87A4-9E29DBFD55F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Utitlites", "Education.Utitlites\Education.Utitlites.csproj", "{5AB0C8FB-A76A-4284-9F3C-1D6719BC3A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Utitlites", "Education.Utitlites\Education.Utitlites.csproj", "{5AB0C8FB-A76A-4284-9F3C-1D6719BC3A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Helpers", "Education.Helpers\Education.Helpers.csproj", "{31E566DD-4B2D-4A1B-AE4B-A516C6326775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Helpers", "Education.Helpers\Education.Helpers.csproj", "{31E566DD-4B2D-4A1B-AE4B-A516C6326775}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Presentation.Web", "Education.Presentation.Web\Education.Presentation.Web.csproj", "{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Presentation.Web", "Education.Presentation.Web\Education.Presentation.Web.csproj", "{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Data.Common", "Education.Data.Common\Education.Data.Common.csproj", "{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +78,10 @@ Global
 		{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

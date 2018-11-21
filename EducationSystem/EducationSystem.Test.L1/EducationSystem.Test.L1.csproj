@@ -12,4 +12,12 @@
     <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Education.Data.Common\Education.Data.Common.csproj" />
+    <ProjectReference Include="..\Education.Domain.School\Education.Domains.School.csproj" />
+    <ProjectReference Include="..\Education.Helpers\Education.Helpers.csproj" />
+    <ProjectReference Include="..\Education.Utitlites\Education.Utitlites.csproj" />
+    <ProjectReference Include="..\EducationSystem.DataServices\Education.DataServices.csproj" />
+  </ItemGroup>
+
 </Project>
