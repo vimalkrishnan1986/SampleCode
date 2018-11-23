@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Helpers", "Educat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Presentation.Web", "Education.Presentation.Web\Education.Presentation.Web.csproj", "{6AB6D271-DCF4-4B66-AE15-BCFEC9EC1C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education.Data.Common", "Education.Data.Common\Education.Data.Common.csproj", "{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Data.Common", "Education.Data.Common\Education.Data.Common.csproj", "{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
