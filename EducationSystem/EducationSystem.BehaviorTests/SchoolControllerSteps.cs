@@ -27,6 +27,10 @@ namespace EducationSystem.BehaviorTests
             //
             bool res = false;
 
+            //make call to controller and assign the value accordingly..
+
+            //Since specflow is not stable enough to support .net core,we can not include any of .net core projects over here..
+
             Assert.IsTrue(res);
         }
     }

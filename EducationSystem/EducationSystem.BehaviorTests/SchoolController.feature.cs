@@ -106,7 +106,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 10
  testRunner.And("When I press submit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.Then("the result should be  \"true\" on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("Then the result should be  \"true\" on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
