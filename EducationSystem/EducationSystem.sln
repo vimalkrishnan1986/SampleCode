@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Presentation.Web"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Education.Data.Common", "Education.Data.Common\Education.Data.Common.csproj", "{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationSystem.BehaviorTests", "EducationSystem.BehaviorTests\EducationSystem.BehaviorTests.csproj", "{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04EFB5CD-BF3D-4604-A0F5-5A306AE70CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{E89E6315-A40E-42F0-8CCE-E3F2B85B4F8E} = {66AFE28B-92FF-455C-87D0-8B6587EDB75D}
 		{BDE0D13E-A962-4D25-9965-74794FCD4F50} = {929857E3-D583-4250-8BBD-20FA070C2A4A}
 		{2F92D935-1AFC-46B8-87A4-9E29DBFD55F7} = {FF1A4D71-8FA3-4B8E-B23E-6F2C68C89308}
+		{5AFF1C5C-15A0-45BD-BB5C-1D383F162FEC} = {7BB887BB-07CC-4A71-B188-2EABDA0C0AA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3101B9CA-D544-4188-BB12-4B3A6B8AC3B3}
