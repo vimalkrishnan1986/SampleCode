@@ -8,6 +8,6 @@ namespace Education.BusinessServices.Contracts
 {
     public interface ISchoolBusinessService
     {
-        Task<Boolean> Resgister(RegistrationRequest registrationModel);
+        Task<Boolean> Register(RegistrationRequest registrationModel);
     }
 }

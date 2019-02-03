@@ -62,7 +62,7 @@ namespace EducationSystem.Test.L0.Business
             ISchoolBusinessService schoolBusinessService = new SchoolBusinessService(_mockSchoolDataService.Object, _mockLoggingService.Object);
 
             //act
-            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationRequest>());
+            var res = await schoolBusinessService.Register(It.IsAny<RegistrationRequest>());
 
             //assert
             res.Should().BeTrue();
@@ -77,7 +77,7 @@ namespace EducationSystem.Test.L0.Business
             ISchoolBusinessService schoolBusinessService = new SchoolBusinessService(_mockSchoolDataService.Object, _mockLoggingService.Object);
 
             //act
-            var res = await schoolBusinessService.Resgister(It.IsAny<RegistrationRequest>());
+            var res = await schoolBusinessService.Register(It.IsAny<RegistrationRequest>());
 
             //assert
             res.Should().BeFalse();

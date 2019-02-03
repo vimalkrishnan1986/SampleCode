@@ -68,7 +68,7 @@ namespace EducationSystem.Test.L0.Controller
         public async Task SchoolControllerTestL0_Register_Success()
         {
             // Assemble
-            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationRequest>())).Returns(Task.FromResult(true));
+            _mockSchoolBusinessService.Setup(m => m.Register(It.IsAny<RegistrationRequest>())).Returns(Task.FromResult(true));
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act
@@ -85,7 +85,7 @@ namespace EducationSystem.Test.L0.Controller
         public async Task SchoolControllerTestL0_Register_Failure()
         {
             // Assemble
-            _mockSchoolBusinessService.Setup(m => m.Resgister(It.IsAny<RegistrationRequest>())).Throws(new OperationCanceledException());
+            _mockSchoolBusinessService.Setup(m => m.Register(It.IsAny<RegistrationRequest>())).Throws(new OperationCanceledException());
             _controller = new SchoolController(_mockSchoolBusinessService.Object, _mockLoggingService.Object);
 
             // Act

@@ -31,7 +31,7 @@ namespace Education.Services.Api.Controllers
                 {
                     throw new ArgumentNullException(nameof(model));
                 }
-                if (await _schoolBusinessService.Resgister(model.ToDomain()))
+                if (await _schoolBusinessService.Register(model.ToDomain()))
                 {
                     return Accepted();
                 }

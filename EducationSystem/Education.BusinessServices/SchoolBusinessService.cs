@@ -27,7 +27,7 @@ namespace Education.BusinessServices
             _schoolDataService = schoolDataService ?? throw new ArgumentNullException(nameof(schoolDataService));
             _loggingService = loggingService ?? throw new ArgumentNullException(nameof(loggingService));
         }
-        public async Task<bool> Resgister(RegistrationRequest registrationModel)
+        public async Task<bool> Register(RegistrationRequest registrationModel)
         {
             _loggingService.Log($"Request has been recieved at {ServiceName} ");
 
