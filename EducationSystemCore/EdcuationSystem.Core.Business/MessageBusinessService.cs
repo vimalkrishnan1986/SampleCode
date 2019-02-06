@@ -20,8 +20,7 @@ namespace EdcuationSystem.Core.Business
         public async Task Send(object payLoad, string queueName)
         {
             byte[] utf8MessageBytes = Encoding.UTF8.GetBytes(payLoad.ToString());
-            Stream stream = new MemoryStream(utf8MessageBytes);
-            await _messageBusClient.Send(stream, queueName, Guid.NewGuid().ToString(), null);
+            await _messageBusClient.Send(utf8MessageBytes, queueName, Guid.NewGuid().ToString(), null);
         }
     }
 }
