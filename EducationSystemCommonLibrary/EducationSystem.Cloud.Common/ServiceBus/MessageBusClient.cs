@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.IO;
-using Microsoft.ServiceBus.Messaging;
 using System.Collections.Generic;
+using Microsoft.Azure.ServiceBus;
 
 namespace EducationSystem.Cloud.Common.ServiceBus
 {
     public sealed class MessageBusClient : IMessageBusClient
     {
-        private readonly MessagingFactory _factory;
+        private readonly ServiceBusSetting _serviceBusSetting;
         public MessageBusClient(ServiceBusSetting serviceBusSetting)
         {
-            var _messageBus = serviceBusSetting ?? throw new ArgumentNullException(nameof(serviceBusSetting));
-            _factory = MessagingFactory.CreateFromConnectionString(_messageBus.ConnectionString);
+            _serviceBusSetting = serviceBusSetting ?? throw new ArgumentNullException(nameof(serviceBusSetting));
         }
 
-        public async Task Send(Stream message, string queueName, string correlationId, Dictionary<string, string> properties)
+        public async Task Send(byte[] message, string queueName, string correlationId, Dictionary<string, string> properties)
         {
             try
             {
 
-                var client = _factory.CreateQueueClient(queueName);
-                var brokeredMessage = new BrokeredMessage(message)
+                var client = new QueueClient(_serviceBusSetting.ConnectionString,
+                    queueName, ReceiveMode.ReceiveAndDelete, RetryPolicy.Default);
+
+                var brokeredMessage = new Message(message)
                 {
                     CorrelationId = correlationId,
                 };
@@ -29,7 +30,7 @@ namespace EducationSystem.Cloud.Common.ServiceBus
                 {
                     foreach (var prop in properties)
                     {
-                        brokeredMessage.Properties.Add(prop.Key, prop.Value);
+                        brokeredMessage.UserProperties.Add(prop.Key, prop.Value);
                     }
                 }
 

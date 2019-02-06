@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Microsoft.ServiceBus.Messaging;
+using Microsoft.Azure.ServiceBus;
+using System.Threading;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace EducationSystem.Cloud.Common.ServiceBus
 {
@@ -23,23 +26,21 @@ namespace EducationSystem.Cloud.Common.ServiceBus
             }
             _isStarted = false;
             _processors = new List<IProcessor<T>>();
-            var factory = MessagingFactory.CreateFromConnectionString(serviceBusSetting.ConnectionString);
-            _queueClient = factory.CreateQueueClient(queueName, ReceiveMode.ReceiveAndDelete);
+            _queueClient = new QueueClient(serviceBusSetting.ConnectionString, queueName, ReceiveMode.PeekLock, RetryPolicy.Default);
         }
 
-        public async Task Recieve(BrokeredMessage arg)
+        public async Task Recieve(Message message, CancellationToken token)
         {
             try
             {
-                var message = arg.GetBody<T>();
-                if (message == null)
+                var messageBody = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(message.Body));
+                if (messageBody == null)
                 {
                     return;
                 }
-
                 foreach (var processor in _processors)
                 {
-                    await processor.Process(message);
+                    await processor.Process(messageBody);
                 }
             }
             catch
@@ -60,15 +61,13 @@ namespace EducationSystem.Cloud.Common.ServiceBus
                 throw new IndexOutOfRangeException("Processors list is empty");
             }
 
-            await Task.Factory.StartNew(() =>
-          {
-              _queueClient.OnMessageAsync(Recieve, new OnMessageOptions()
-              {
-                  AutoComplete = true,
-                  MaxConcurrentCalls = 1
-              }); ;
-              _isStarted = true;
-          });
+            _queueClient.RegisterMessageHandler(async (message, token) =>
+            {
+                await Recieve(message, token);
+            }, new MessageHandlerOptions(async args => Console.WriteLine(args.Exception))
+            { MaxConcurrentCalls = 1, AutoComplete = false });
+
+            _isStarted = true;
         }
 
         public async Task Stop()

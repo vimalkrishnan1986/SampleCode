@@ -6,6 +6,6 @@ namespace EducationSystem.Cloud.Common.ServiceBus
 {
     public interface IMessageBusClient
     {
-        Task Send(Stream message, string queueName, string correlationId, Dictionary<string, string> properties);
+        Task Send(byte[] message, string queueName, string correlationId, Dictionary<string, string> properties);
     }
 }
